@@ -3,12 +3,10 @@
 Install the Cyber CTF desktop launcher on macOS:
 
 ```bash
-brew tap CyberCTF/homebrew-tap
+brew tap Cyber-Courses/homebrew-tap
+brew trust --tap cyber-courses/tap
 brew install --cask cyberctf
 ```
 
-Or in one line:
-
-```bash
-brew install --cask CyberCTF/homebrew-tap/cyberctf
-```
+Homebrew 7 only loads casks from third-party taps you have trusted, hence the `brew trust` step.
+The cask is bumped automatically by the launcher's release workflow.
