@@ -1,6 +1,6 @@
 cask "cyberctf" do
-  version "0.3.12"
-  sha256 "e05092ecf2db2ec45096a0db4c8079c4547e935b6455f1b32af42c69194f81e7"
+  version "0.3.13"
+  sha256 "ac2fce968ea6a74e2e2165702217867985cc8e78c2b24a02c66ccff7c7657d2f"
 
   url "https://github.com/Cyber-Courses/Cyber-CTF-Desktop/releases/download/v#{version}/Cyber.CTF_#{version}_universal.dmg"
   name "Cyber CTF"
