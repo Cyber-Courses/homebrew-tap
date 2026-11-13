@@ -1,16 +1,32 @@
+# Cyber CTF's Homebrew cask, Casks/cyberctf.rb in Cyber-Courses/homebrew-tap. Its source is
+# packaging/homebrew/cyberctf.rb in Cyber-Courses/Cyber-CTF-Launcher: each release's distribute
+# workflow fills in the version and the DMG's checksum and replaces the tap's copy, so edit it
+# there, not in the tap.
 cask "cyberctf" do
-  version "1.8.9"
-  sha256 "ed8c40febc7eb1766b42b7cfcd5fd7829492ca7d1e5912ddb4c8ca0cc52ecdf1"
+  version "1.9.0"
+  sha256 "3afc10bedb6ab88abcb98ff8ea3c24a4b55b52ac959ea8d7a44546d0d6c61802"
 
   url "https://github.com/Cyber-Courses/Cyber-CTF-Launcher/releases/download/v#{version}/Cyber.CTF_#{version}_universal.dmg"
   name "Cyber CTF"
   desc "Run Cyber CTF labs on your own machine"
   homepage "https://github.com/Cyber-Courses/Cyber-CTF-Launcher"
 
+  depends_on :macos
+
+  # No `auto_updates true`: a Homebrew install is updated by `brew upgrade`, not by the app's own
+  # updater, which a Homebrew install doesn't use.
+
   app "Cyber CTF.app"
 
+  # Not removed by zap: the login keychain's items of service "org.cyberctf.desktop" (the
+  # sign-in session, and a password per saved server or cloud account; delete them in Keychain
+  # Access, or with `security delete-generic-password -s org.cyberctf.desktop` until it finds
+  # none), and ~/CyberCTF/shared, the folder shared with the attack box, which holds the user's
+  # own files.
   zap trash: [
     "~/Library/Application Support/org.cyberctf.desktop",
     "~/Library/Caches/org.cyberctf.desktop",
+    "~/Library/Logs/org.cyberctf.desktop",
+    "~/Library/WebKit/org.cyberctf.desktop",
   ]
 end
